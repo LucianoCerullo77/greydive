@@ -2,21 +2,19 @@ import React from "react";
 import { getDBData } from "../api/controller";
 
 const useClients = () => {
+  const [clients, setClients] = React.useState([]);
 
-    const [clients, setClients] = React.useState([]);
+  const [loading, setLoading] = React.useState(false);
 
-    const [loading, setLoading] = React.useState(false);
-  
-    React.useEffect(() => {
-      setLoading(true);
-      getDBData().then((res) => {
-        setClients(res);
-        setLoading(false);
-      });
-    }, []);
+  React.useEffect(() => {
+    setLoading(true);
+    getDBData().then((res) => {
+      setClients(res);
+      setLoading(false);
+    });
+  }, []);
 
-    return { clients, loading };
+  return { clients, loading };
+};
 
-}
-
-export default useClients
+export default useClients;

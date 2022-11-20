@@ -1,8 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import Container from "react-bootstrap/esm/Container";
-// import Row from "react-bootstrap/esm/Row";
-// import Col from "react-bootstrap/esm/Col";
 import useClient from "../../hooks/useClient";
 import Preguntas from "../Preguntas";
 
@@ -15,25 +13,26 @@ function User() {
     <>
       <Container className="text-center">
         {loading ? (
-          <h1>Loading...</h1>
+          <h1 className="text-center">Loading...</h1>
         ) : (
           <>
-            <h2 className="mt-4">Resultado</h2>
-            <h4>Cliente : {info.cliente}</h4>
-            <h4>Testeador : {info.plataforma}</h4>
-            <h4>URL del Video : {info.linkVideo}</h4>
-            <p>Tarea : {info.escenario}</p>
-            <p>Duracion de la Tarea : {info.timeTest}</p>
-            <hr />
+            <Container className="my-4 py-2 shadow rounded bg-dark text-white">
+              <h2 className="my-4 mx-2">Resultado</h2>
+              <h4 className="my-4 mx-2">Cliente : {info.cliente}</h4>
+              <h4 className="my-4 mx-2">Testeador : {info.plataforma}</h4>
+              <h4 className="my-4 mx-2">URL del Video : {info.linkVideo}</h4>
+              <p className="my-4 mx-2">Tarea : {info.escenario}</p>
+              <p className="my-4 mx-2">Duracion total : {info.timeTest}</p>
+              {/* <p className="my-4 mx-2">Transcripcion : {info.transcripcion}</p> */}
+            </Container>
 
             {info?.preguntas?.map((pregunta) => {
               return (
-                      <Preguntas
-                        tiempo={pregunta.tiempo}
-                        tarea={pregunta.tipoTarea}
-                        respuesta={pregunta.respuesta}
-                        texto={pregunta.texto}
-                      />
+                <Preguntas
+                  tiempo={pregunta.tiempo}
+                  respuesta={pregunta.respuesta}
+                  texto={pregunta.texto}
+                />
               );
             })}
           </>

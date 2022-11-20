@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import useClients from "../../hooks/useClients";
 
 function ItemList() {
-
-  const {clients, loading} = useClients() 
+  const { clients, loading } = useClients();
 
   return (
     <>
@@ -16,15 +15,20 @@ function ItemList() {
             <div>Loading</div>
           ) : (
             clients.map((item) => (
-              <li key={item.cliente}>
-                <Link to={`/resultado/${item.cliente}`}>
-                  {item.cliente} - {item.preguntas.texto}
-                </Link>
-              </li>
+              <Container>
+                <li key={item.cliente}>
+                  <Link to={`/resultado/${item.cliente}`}>{item.cliente}</Link>
+                </li>
+              </Container>
             ))
           )}
         </ul>
-        <p>Para volver al Inicio, hacer click en el boton Inicio</p>
+        <p>
+          Una vez se clickeen algunas de las opciones, se mostraran los
+          resultados correspondientes.
+          <br />
+          Para volver al Inicio, hacer click en el boton Inicio
+        </p>
       </Container>
     </>
   );

@@ -14,7 +14,7 @@ function App() {
   return (
     <>
       <Router>
-        <div className="App">
+        <div className="App bg-light">
           <Container className="text-center justify-content-center align-content-center mt-2">
             <NavLink
               to="/"
